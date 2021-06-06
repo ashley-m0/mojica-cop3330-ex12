@@ -42,16 +42,62 @@ public class App
     public static void main( String[] args )
     {
         App myApp = new App();
+        String principalString = myApp.getPrincipal();
+        String interestString = myApp.getInterest();
+        String timeString = myApp.getTime();
+
+        double principal = myApp.convertStringToDouble(principalString);
+        double interest = myApp.convertStringToDouble(interestString);
+        double time = myApp.convertStringToDouble(timeString);
+
+        interest = myApp.convertPercentToDecimal(interest);
+
+        double worth = myApp.calcWorth(principal, interest, time);
+
+        String message = myApp.genereateMessage(interestString,timeString, worth);
+        System.out.print(message);
     }
 
     public String getPrincipal(){
-        System.out.print("Enter the principal:");
+        System.out.print("Enter the principal: ");
         String principal = input.nextLine();
         return principal;
     }
 
     public String getInterest(){
-        
+        System.out.print("Enter the rate of interest: ");
+        String interest = input.nextLine();
+        return interest;
     }
 
+    public String getTime(){
+        System.out.print("Enter the number of years: ");
+        String time = input.nextLine();
+        return time;
+    }
+
+    public double convertStringToDouble(String word){
+        return Double.parseDouble(word);
+    }
+
+    public double convertPercentToDecimal(double percent){
+        return (percent / 100);
+    }
+    public double calcWorth(double principal, double interest, double time){
+        double worth = (principal * (1.0 + (interest * time)));
+        double leftover = worth % 0.010;
+
+        if (leftover >= 0.005){
+            worth = worth - leftover;
+            worth = worth + 1.0;
+        } else {
+            worth -= leftover;
+        }
+
+        return worth;
+    }
+
+    public String genereateMessage(String interest, String time, double worth){
+        return String.format("After %s years at %s%%, the investment will be worth $%.2f.\n", time, interest, worth);
+    }
 }
