@@ -85,6 +85,8 @@ public class App
     }
     public double calcWorth(double principal, double interest, double time){
         double worth = (principal * (1.0 + (interest * time)));
+
+        /*
         double leftover = worth % 0.010;
 
         if (leftover >= 0.005){
@@ -93,7 +95,7 @@ public class App
         } else {
             worth -= leftover;
         }
-
+        */
         return worth;
     }
 
