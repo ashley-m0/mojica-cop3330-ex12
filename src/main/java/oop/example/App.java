@@ -90,8 +90,8 @@ public class App
         double leftover = worth % 0.010;
 
         if (leftover >= 0.005){
-            worth = worth - leftover;
-            worth = worth + 1.0;
+            worth -= leftover;
+            worth += 0.01;
         } else {
             worth -= leftover;
         }
