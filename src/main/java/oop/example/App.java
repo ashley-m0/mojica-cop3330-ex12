@@ -54,7 +54,7 @@ public class App
 
         double worth = myApp.calcWorth(principal, interest, time);
 
-        String message = myApp.genereateMessage(interestString,timeString, worth);
+        String message = myApp.generateMessage(interestString,timeString, worth);
         System.out.print(message);
     }
 
@@ -99,7 +99,7 @@ public class App
         return worth;
     }
 
-    public String genereateMessage(String interest, String time, double worth){
+    public String generateMessage(String interest, String time, double worth){
         return String.format("After %s years at %s%%, the investment will be worth $%.2f.\n", time, interest, worth);
     }
 }
